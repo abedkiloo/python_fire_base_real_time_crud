@@ -30,9 +30,16 @@ class FirebaseCRUD:
     def read_objects(self, objects):
         print(objects)
 
+    def update_object(self, data_base="ponasasa", table="users", index=None,):
+        request_string = f'/{data_base}/{table}/-MGriENlOp0fuio9rXts'
+
+
+        result = self.firebase_project.put(request_string,'first_name','Abed')
+
 
 new_fire_base = FirebaseCRUD()
-new_fire_base.read_objects(
-    new_fire_base.read_objects(new_fire_base.read_data()))
-new_fire_base.read_objects(
-    new_fire_base.single_object("-MGriENlOp0fuio9rXts"))
+# new_fire_base.read_objects(
+#     new_fire_base.read_objects(new_fire_base.read_data()))
+# new_fire_base.read_objects(
+#     new_fire_base.single_object("-MGriENlOp0fuio9rXts"))
+new_fire_base.update_object()
