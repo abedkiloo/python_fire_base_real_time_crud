@@ -13,15 +13,26 @@ class FirebaseCRUD:
                                             {'X_FANCY_HEADER': 'VERY FANCY'})
         print(result)
 
-    def read_data(self, data_base, table, index=None):
-        result = self.firebase_project.get(f'/{data_base}/{table}', index)
-        print(result)
+    def read_data(self, data_base="ponasasa", table="users", index=None):
+        request_string = f'/{data_base}/{table}'
+        if index is not None:
+            request_string = request_string + f"/{index}"
+        result = self.firebase_project.get(request_string, None)
+        data = dict()
+        for key, value in result.items():
+            data[key] = value
+        return data
+
+    def single_object(self, index):
+        obj = self.read_data(data_base="ponasasa", table="users", index=index)
+        return obj
+
+    def read_objects(self, objects):
+        print(objects)
 
 
 new_fire_base = FirebaseCRUD()
-new_fire_base.read_data(data_base="ponasasa", table="users", index="-MGriENlOp0fuio9rXts")
-# new_user = {
-#     "first_name": 'Abednego',
-#     "last_name": 'Kilonzo'
-# }
-# new_fire_base.post_data(data=new_user, data_base="ponasasa", table="users")
+new_fire_base.read_objects(
+    new_fire_base.read_objects(new_fire_base.read_data()))
+new_fire_base.read_objects(
+    new_fire_base.single_object("-MGriENlOp0fuio9rXts"))
