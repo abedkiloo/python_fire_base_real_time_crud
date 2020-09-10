@@ -13,10 +13,15 @@ class FirebaseCRUD:
                                             {'X_FANCY_HEADER': 'VERY FANCY'})
         print(result)
 
+    def read_data(self, data_base, table):
+        result = self.firebase_project.get(f'/{data_base}/{table}', None)
+        print(result)
+
 
 new_fire_base = FirebaseCRUD()
-new_user = {
-    "first_name": 'Abednego',
-    "last_name": 'Kilonzo'
-}
-new_fire_base.post_data(data=new_user, data_base="ponasasa", table="users")
+new_fire_base.read_data(data_base="ponasasa", table="users")
+# new_user = {
+#     "first_name": 'Abednego',
+#     "last_name": 'Kilonzo'
+# }
+# new_fire_base.post_data(data=new_user, data_base="ponasasa", table="users")
