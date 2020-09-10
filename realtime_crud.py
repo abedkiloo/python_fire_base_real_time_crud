@@ -9,17 +9,17 @@ class FirebaseCRUD:
         self.firebase_project = firebase.FirebaseApplication(self.fire_base_url, None)
 
     def post_data(self, data_base, table, data):
-        result = self.firebase_project.post(f'/{data_base}/{table}', new_user, {'print': 'pretty'},
+        result = self.firebase_project.post(f'/{data_base}/{table}', data, {'print': 'pretty'},
                                             {'X_FANCY_HEADER': 'VERY FANCY'})
         print(result)
 
-    def read_data(self, data_base, table):
-        result = self.firebase_project.get(f'/{data_base}/{table}', None)
+    def read_data(self, data_base, table, index=None):
+        result = self.firebase_project.get(f'/{data_base}/{table}', index)
         print(result)
 
 
 new_fire_base = FirebaseCRUD()
-new_fire_base.read_data(data_base="ponasasa", table="users")
+new_fire_base.read_data(data_base="ponasasa", table="users", index="-MGriENlOp0fuio9rXts")
 # new_user = {
 #     "first_name": 'Abednego',
 #     "last_name": 'Kilonzo'
